@@ -42,12 +42,30 @@
     LC_TIME = "fr_FR.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # Enable the GNOME Desktop Environment
+  services.xserver = {
+    enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+  }
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  environment.gnome.excludePackages = (with pkgs; [
+    atomix # puzzle game
+    # cheese # webcam tool
+    epiphany # web browser
+    # evince # document viewer
+    geary # email reader
+    # gedit # text editor
+    # gnome-characters
+    # gnome-music
+    # gnome-photos
+    # gnome-terminal
+    # gnome-tour
+    hitori # sudoku game
+    iagno # go game
+    tali # poker game
+    totem # video player
+  ]);
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -85,6 +103,7 @@
     isNormalUser = true;
     description = "Stephanie";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -99,18 +118,25 @@
     size = 8*1024;
   } ];
 
-  # Install firefox.
-  # programs.firefox.enable = true;
+  
+  # Enable the Flakes feature and the accompanying new nix command-line tool
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+  
+  environment.systemPackages = with pkgs; [
+    # Flakes clones its dependencies through the git command,
+    # so git must be installed first
+    git
+    vim
+    wget
+    curl
+  ];
+
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
