@@ -22,7 +22,7 @@
       la = "eza --icons -la";
       tree = "eza --tree";
       rcp = "rsync -ahP --info=progress2";
-      ssh = "kitty +kitten ssh";
+      sshk = "kitty +kitten ssh";
     };
     history = {
       # path = "${config.home.homeDirectory}/.zshistory";
@@ -50,13 +50,6 @@
 
       source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
       source ~/.config/zsh/p10k.zsh
-
-      # SSH add keys
-      if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
-        export SSH_AUTH_SOCK="/run/user/1000/ssh-agent" 
-        ssh-add $HOME/.ssh/olympe-git 2> /dev/null
-        ssh-add $HOME/.ssh/gitlab-ensimag 2> /dev/null
-      fi
     '';
 
   };

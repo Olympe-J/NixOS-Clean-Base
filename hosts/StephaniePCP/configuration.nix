@@ -90,8 +90,17 @@
     ];
   };
 
+  # Support for NTFS
+  boot.supportedFilesystems = [ "ntfs" ];
+
+  # Swapfile
+  swapDevices = [ {
+    device = "/var/lib/swapfile";
+    size = 8*1024;
+  } ];
+
   # Install firefox.
-  programs.firefox.enable = true;
+  # programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
