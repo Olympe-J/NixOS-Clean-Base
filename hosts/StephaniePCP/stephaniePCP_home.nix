@@ -8,9 +8,9 @@
 {
 
   imports = [
+    ../../home/desktop
     ../../home/programs
     ../../home/shell
-    ../../home/gnome_extensions.nix
   ];
 
   home = {
