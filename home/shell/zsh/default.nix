@@ -23,8 +23,8 @@
       tree = "eza --tree";
       rcp = "rsync -ahP --info=progress2";
       sshk = "kitty +kitten ssh";
-      update = "sh ~/.config/shell/update.sh"
-      clean-nix = "sh ~/.config/shell/clean-nix.sh"
+      update = "sh ~/.config/shell/update.sh";
+      clean-nix = "sh ~/.config/shell/clean-nix.sh";
     };
     history = {
       # path = "${config.home.homeDirectory}/.zshistory";
