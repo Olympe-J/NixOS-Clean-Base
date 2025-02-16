@@ -8,7 +8,7 @@
   };  
 
   home.packages = with pkgs; [
-    gnomeExtentions.gt4-desktop-icons-ng-ding
+    gnomeExtensions.gtk4-desktop-icons-ng-ding
   ];
 
 }
