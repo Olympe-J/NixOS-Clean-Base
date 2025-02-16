@@ -120,6 +120,9 @@
     size = 8*1024;
   } ];
 
+  # Teamviewer
+  services.teamviewer.enable = true;
+
   
   # Enable the Flakes feature and the accompanying new nix command-line tool
   nix.settings.experimental-features = [
