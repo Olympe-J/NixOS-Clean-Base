@@ -3,7 +3,7 @@
 {
 
   imports = [
-    ./gnome_extentions.nix
+    ./gnome_extensions.nix
   ];
 
 }
