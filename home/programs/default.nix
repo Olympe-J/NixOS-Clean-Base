@@ -3,11 +3,12 @@
 {
 
   imports = [
-    ./programs_utils.nix
     ./git.nix
+    ./programs_utils.nix
     ./firefox
-    ./vscode
     ./openvpn
+    ./rustdesk
+    ./vscode
   ];
 
 }
